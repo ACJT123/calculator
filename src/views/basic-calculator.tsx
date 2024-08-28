@@ -1,7 +1,12 @@
 import { useReducer } from "react";
 import Buttons from "../components/buttons";
-import { ValueState, ValueAction, ActionTypes, Operator } from "../types/basic-calculator";
-
+import {
+  ValueState,
+  ValueAction,
+  ActionTypes,
+  Operator,
+} from "../types/basic-calculator";
+import { evaluate } from "mathjs";
 
 export default function BasicCalculator() {
   function reducer(state: ValueState, action: ValueAction): ValueState {
@@ -44,7 +49,7 @@ export default function BasicCalculator() {
 
       case ActionTypes.EQUAL:
         try {
-          const result = eval(expression.replace(/X/g, "*")); // exec calculation using eval (expression in string), replace X to * for multiply
+          const result = evaluate(expression.replace(/X/g, "*")); // exec calculation using eval (expression in string), replace X to * for multiply
 
           return {
             ...state,
