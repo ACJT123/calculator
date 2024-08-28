@@ -1,31 +1,7 @@
 import { useReducer } from "react";
 import Buttons from "../components/buttons";
+import { ValueState, ValueAction, ActionTypes, Operator } from "../types/basic-calculator";
 
-enum ActionTypes {
-  CLEAR = "clear",
-  NEGATIVE = "negative",
-  BACKSPACE = "BACKSPACE",
-  OPERATOR = "operator",
-  NUMBER = "number",
-  EQUAL = "equal",
-}
-
-enum Operator {
-  ADD = "+",
-  SUBTRACT = "-",
-  MULTIPLY = "*",
-  DIVIDE = "/",
-}
-
-interface ValueState {
-  expression: string;
-  currentValue: string;
-}
-
-interface ValueAction {
-  type: ActionTypes;
-  payload?: string | number;
-}
 
 export default function BasicCalculator() {
   function reducer(state: ValueState, action: ValueAction): ValueState {
